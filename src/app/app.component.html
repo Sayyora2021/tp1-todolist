@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center my-5">Todo list</h1>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 col-12 d-flex">
+            <input class="form-control" type="text" [(ngModel)]="newTaskName" placeholder="nom de la nouvelle tâche">
+
+            <button class="btn btn-primary mx-2" (click)="addTask()">Ajouter</button>
+        </div>
+
+        <div class="col-6 offset-3 my-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let task of getSortedTask()" [class]="{'task-done' : task.isDone}">
+                        <td>{{ task.id }}</td>
+                        <td class="task-name" (click)="pickTask(task)">{{ task.name }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-success mx-2" (click)="setTaskDone(task)">archiver</button>
+                            <button class="btn btn-sm btn-danger" (click)="removeTask(task)">supprimer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-6 offset-3">
+            Tache séléctionnée : <b>{{ pickedTask ? pickedTask.name : 'rien' }}</b>
+        </div>
+    </div>
+</div>

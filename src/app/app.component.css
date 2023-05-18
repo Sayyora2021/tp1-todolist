@@ -1,0 +1,7 @@
+.task-done {
+    background: #DDD;
+}
+
+.task-name {
+    cursor: pointer;
+}
